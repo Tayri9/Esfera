@@ -4,18 +4,12 @@ using UnityEngine;
 
 public class CoinRotation : MonoBehaviour
 {
-    public float rotationX = 0.0f;
-    public float rotationY = 0.0f;
-    public float rotationZ = 0.0f * Time.deltaTime;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
+    [SerializeField]
+    public float rotationZ = 100.0f;
+    
     // Update is called once per frame
     void Update()
     {
-        transform.Rotate(rotationX, rotationY, rotationZ);
+        transform.Rotate(0.0f, 0.0f, rotationZ * Time.deltaTime);
     }
 }

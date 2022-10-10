@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.5748171, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -316,9 +316,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5381460cdfdb66f4a953c61dfa6b1650, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationX: 0
-  rotationY: 0
-  rotationZ: 0
+  rotationZ: 100
 --- !u!136 &371133941
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -327,7 +325,7 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 371133939}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.5000001
   m_Height: 2
@@ -509,6 +507,7 @@ MonoBehaviour:
   moveY: 0
   moveZ: 0
   moveSpeed: 1.5
+  impulse: 9
 --- !u!54 &554915363
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -802,7 +801,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 979ea47f7345f5341932a7a80e99dde5, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
