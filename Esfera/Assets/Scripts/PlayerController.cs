@@ -1,15 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
     Rigidbody body;
     Vector3 move;
-    public float moveX;
-    public float moveY;
-    public float moveZ;
-    public float moveSpeed = 2.5f;
+    
+
+    int contadorMoneda = 0;
 
     [SerializeField]
     public float impulse = 9f;
@@ -23,13 +20,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        moveX = Input.GetAxis("Horizontal") * Time.deltaTime * moveSpeed;
-        moveZ = Input.GetAxis("Vertical") * Time.deltaTime * moveSpeed;
-
-
         
-
-        //transform.Translate(moveX, moveY, moveZ);  
     }
 
     private void FixedUpdate()
@@ -37,5 +28,20 @@ public class PlayerController : MonoBehaviour
         move.x = Input.GetAxis("Horizontal") * Time.deltaTime * impulse;
         move.z = Input.GetAxis("Vertical") * Time.deltaTime * impulse;
         body.AddForce(move, ForceMode.Impulse);
+    }
+
+    private void OnTriggerEnter(Collider col)   
+    {
+        if (col.gameObject.tag == "Coin")
+        {
+            //Desactivo la moneda
+            col.gameObject.SetActive(false);
+
+            //Sumo una moneda
+            contadorMoneda++;
+
+            //Muestro el contador de monedas en el Label que se activa al llegar a la meta
+            
+        }
     }
 }
