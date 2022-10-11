@@ -37,6 +37,9 @@ public class PlayerController : MonoBehaviour
         //contador tiempo
         time = time - 1f * Time.deltaTime;
         labelTime.text = "Time: " + time.ToString("00.0");
+
+        //contador monedas
+        labelCoins.text = coinCounter.ToString();
     }
 
     private void FixedUpdate()
