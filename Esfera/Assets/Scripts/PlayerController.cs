@@ -1,26 +1,42 @@
 using UnityEngine;
+using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
+    //movimiento
     Rigidbody body;
     Vector3 move;    
     [SerializeField]
     public float impulse = 9f;
+
+    //particulas
     [SerializeField]
     GameObject prefabParticles;
+
+    //monedas
     int coinCounter = 0;
+    [SerializeField]
+    TextMeshProUGUI labelCoins;
+
+    //tiempo
+    float time;
+    [SerializeField]
+    TextMeshProUGUI labelTime;
 
 
     // Start is called before the first frame update
     void Start()
     {
         body = GetComponent<Rigidbody>();
+        time = 50f;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        //contador tiempo
+        time = time - 1f * Time.deltaTime;
+        labelTime.text = "Time: " + time.ToString("00.0");
     }
 
     private void FixedUpdate()
@@ -42,7 +58,7 @@ public class PlayerController : MonoBehaviour
             col.gameObject.SetActive(false);
 
             //Sumo una moneda
-            coinCounter++;       
+            coinCounter++;     
             
         }
     }
