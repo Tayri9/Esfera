@@ -38,7 +38,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         body = GetComponent<Rigidbody>();
-        time = 5f; //50f
+        time = 50f; //50f
     }
 
     // Update is called once per frame
