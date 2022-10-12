@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour
     GameObject prefabParticles;
 
     //monedas
-    int totalCoins = 35;
+    int totalCoins = 1;//35;
     int coinCounter = 0;
     [SerializeField]
     TextMeshProUGUI labelCoins;
@@ -31,7 +31,13 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     TextMeshProUGUI labelGameOver;
     [SerializeField]
+    TextMeshProUGUI labelCoinTime;
+    [SerializeField]
     TextMeshProUGUI labelButton;
+
+    //canvas monedas y tiempo
+    [SerializeField]
+    GameObject canvasCoinTime;
 
 
     // Start is called before the first frame update
@@ -54,6 +60,8 @@ public class PlayerController : MonoBehaviour
             this.enabled = false;
             labelGameOver.text = "GAME OVER";
             labelButton.text = "Try again";
+            labelCoinTime.text = "Coins: " + coinCounter.ToString() + " \nTime: " + time.ToString("00.0");
+            canvasCoinTime.SetActive(false);
             canvasGameOver.SetActive(true);
         }
 
@@ -66,6 +74,8 @@ public class PlayerController : MonoBehaviour
             this.enabled = false;
             labelGameOver.text = "VICTORY";
             labelButton.text = "Play again";
+            labelCoinTime.text = "Coins: " + coinCounter.ToString() + " \nTime: " + time.ToString("00.0");
+            canvasCoinTime.SetActive(false);
             canvasGameOver.SetActive(true);
         }
     }
@@ -97,6 +107,6 @@ public class PlayerController : MonoBehaviour
     //función para el botón
     public void ClickOnButton()
     {
-        SceneManager.LoadScene("Game");
+        SceneManager.LoadScene(0);
     }
 }
