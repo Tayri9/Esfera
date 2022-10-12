@@ -75,8 +75,7 @@ public class PlayerController : MonoBehaviour
             this.enabled = false;
             labelGameOver.text = "VICTORY";
             labelButton.text = "Play again";
-            labelCoinTime.text = "Coins: " + coinCounter.ToString() + " \nTime: " + (totalTime - time).ToString("00.0");
-            Debug.Log((totalTime - time) + time);
+            labelCoinTime.text = "Coins: " + coinCounter.ToString() + " \nTime: " + (totalTime - time).ToString("00.0");            
             canvasCoinTime.SetActive(false);
             canvasGameOver.SetActive(true);
         }
