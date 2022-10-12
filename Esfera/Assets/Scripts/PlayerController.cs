@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class PlayerController : MonoBehaviour
     GameObject prefabParticles;
 
     //monedas
+    int totalCoins = 35;
     int coinCounter = 0;
     [SerializeField]
     TextMeshProUGUI labelCoins;
@@ -23,12 +25,20 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     TextMeshProUGUI labelTime;
 
+    //gameover
+    [SerializeField]
+    GameObject canvasGameOver;
+    [SerializeField]
+    TextMeshProUGUI labelGameOver;
+    [SerializeField]
+    TextMeshProUGUI labelButton;
+
 
     // Start is called before the first frame update
     void Start()
     {
         body = GetComponent<Rigidbody>();
-        time = 50f;
+        time = 5f; //50f
     }
 
     // Update is called once per frame
@@ -38,8 +48,26 @@ public class PlayerController : MonoBehaviour
         time = time - 1f * Time.deltaTime;
         labelTime.text = "Time: " + time.ToString("00.0");
 
+        //si el tiempo llega a 0 se termina el juego
+        if (time <= 0)
+        {
+            this.enabled = false;
+            labelGameOver.text = "GAME OVER";
+            labelButton.text = "Try again";
+            canvasGameOver.SetActive(true);
+        }
+
         //contador monedas
-        labelCoins.text = coinCounter.ToString();
+        labelCoins.text = "Coins: " + coinCounter.ToString() + "/" + totalCoins.ToString();
+
+        //si se cogen todas las monedas se termina el juego
+        if (coinCounter == totalCoins)
+        {
+            this.enabled = false;
+            labelGameOver.text = "VICTORY";
+            labelButton.text = "Play again";
+            canvasGameOver.SetActive(true);
+        }
     }
 
     private void FixedUpdate()
@@ -64,5 +92,11 @@ public class PlayerController : MonoBehaviour
             coinCounter++;     
             
         }
+    }
+
+    //función para el botón
+    public void ClickOnButton()
+    {
+        SceneManager.LoadScene("Game");
     }
 }
