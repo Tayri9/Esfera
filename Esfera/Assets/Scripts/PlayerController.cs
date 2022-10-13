@@ -67,18 +67,8 @@ public class PlayerController : MonoBehaviour
         }
 
         //contador monedas
-        labelCoins.text = "Coins: " + coinCounter.ToString() + "/" + totalCoins.ToString();
-
-        //si se cogen todas las monedas se termina el juego
-        if (coinCounter == totalCoins)
-        {
-            this.enabled = false;
-            labelGameOver.text = "VICTORY";
-            labelButton.text = "Play again";
-            labelCoinTime.text = "Coins: " + coinCounter.ToString() + " \nTime: " + (totalTime - time).ToString("00.0");            
-            canvasCoinTime.SetActive(false);
-            canvasGameOver.SetActive(true);
-        }
+        labelCoins.text = "Coins: " + coinCounter.ToString() + "/" + totalCoins.ToString();        
+        
     }
 
     private void FixedUpdate()
@@ -100,8 +90,19 @@ public class PlayerController : MonoBehaviour
             col.gameObject.SetActive(false);
 
             //Sumo una moneda
-            coinCounter++;     
-            
+            coinCounter++;
+
+            //si se cogen todas las monedas se termina el juego
+            if (coinCounter == totalCoins)
+            {
+                this.enabled = false;
+                labelGameOver.text = "VICTORY";
+                labelButton.text = "Play again";
+                labelCoinTime.text = "Coins: " + coinCounter.ToString() + " \nTime: " + (totalTime - time).ToString("00.0");
+                canvasCoinTime.SetActive(false);
+                canvasGameOver.SetActive(true);
+            }
+
         }
     }
 
